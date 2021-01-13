@@ -1,0 +1,27 @@
+ESERCIZIO DB-HOTEL QUERIES
+
+- Selezionare tutte le stanze del primo piano `` 
+	SELECT * FROM `stanze` WHERE `floor` = 1;
+
+- Seleziona tutte le prenotazioni precedenti a maggio 2018
+	SELECT * FROM `prenotazioni` WHERE `created_at` < "2018-05-01";
+
+- Seleziona tutti gli ospiti che hanno più di 20 anni (al momento dell’esecuzione della query) [BOOH]
+
+- Seleziona tutti gli ospiti il cui nome inizia con la E
+	SELECT * FROM `ospiti` WHERE `name` LIKE 'e%'
+
+- Calcola il totale degli ordini accepted
+	SELECT COUNT(`status`) FROM `pagamenti` WHERE `status` = "accepted"
+
+- Qual è il prezzo massimo pagato?
+	SELECT MAX(`price`) FROM `pagamenti`
+
+- Seleziona gli ospiti riconosciuti con patente e nati nel 1975	[ERRATA: i due valori not valid]
+	SELECT * FROM `ospiti` WHERE `document_type` = "CI" AND `date_of_birth` BETWEEN 1975-01-01 AND 1975-12-31
+
+- Quanti posti letto ha l’hotel in totale?
+	SELECT COUNT(`beds`) FROM `stanze`
+
+- Somma i prezzi dei pagamenti raggruppandoli per status
+	SELECT SUM(`price`), `status` FROM `pagamenti` GROUP BY `status`
